@@ -124,10 +124,8 @@ class FBHomeAuto():
     
     
     def getSwitchPlugs(self):
-        logger.debug("Load all available switch plugs from the FritzBox")
-        
-        self.chk_ts = time.time()
-        
+        logger.debug("Load the AINs of all available switch plugs from the FritzBox")
+                
         page = self.fb.loadFritzBoxPage('/webservices/homeautoswitch.lua', '&switchcmd=getswitchlist')
         
         switchPlugs = page.decode('UTF-8').strip('\n').split(',')
@@ -135,29 +133,35 @@ class FBHomeAuto():
         return switchPlugs
     
     
-    def getSwitchPlugState(self, switchPlug):
+    def getSwitchPlugState(self, switchPlugAIN):
         logger.debug("Load the switch state of the given switch plug from the FritzBox")
         
-        self.chk_ts = time.time()
-        
-        page = self.fb.loadFritzBoxPage('/webservices/homeautoswitch.lua', '&switchcmd=getswitchstate&ain=' + switchPlug)
+        page = self.fb.loadFritzBoxPage('/webservices/homeautoswitch.lua', '&switchcmd=getswitchstate&ain=' + switchPlugAIN)
         
         switchPlugState = page.decode('UTF-8').strip('\n')
         
         return switchPlugState
     
     
-    def setSwitchPlugState(self, switchPlug, state):
+    def setSwitchPlugState(self, switchPlugAIN, state):
         logger.debug("Set the switch state for a given switch plug using the FritzBox")
         
-        self.chk_ts = time.time()
-        
         if (state == 'on'):
-            page = self.fb.loadFritzBoxPage('/webservices/homeautoswitch.lua', '&switchcmd=setswitchon&ain=' + switchPlug)
+            page = self.fb.loadFritzBoxPage('/webservices/homeautoswitch.lua', '&switchcmd=setswitchon&ain=' + switchPlugAIN)
         elif (state == 'off'):
-            page = self.fb.loadFritzBoxPage('/webservices/homeautoswitch.lua', '&switchcmd=setswitchoff&ain=' + switchPlug)
+            page = self.fb.loadFritzBoxPage('/webservices/homeautoswitch.lua', '&switchcmd=setswitchoff&ain=' + switchPlugAIN)
         else:
             pass
+        
+        switchPlugState = page.decode('UTF-8').strip('\n')
+        
+        return switchPlugState
+    
+    
+    def toggleSwitchPlugState(self, switchPlugAIN):
+        logger.debug("Toggle the switch state for a given switch plug using the FritzBox")
+        
+        page = self.fb.loadFritzBoxPage('/webservices/homeautoswitch.lua', '&switchcmd=setswitchtoggle&ain=' + switchPlugAIN)
         
         switchPlugState = page.decode('UTF-8').strip('\n')
         
