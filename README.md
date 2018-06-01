@@ -16,12 +16,12 @@ This module provides the class *FBHomeAuto* that encapsules all methods for inte
 ## Using the distribution files
 First you need to download a source distribution file from ...
 
-Afterwards you can easily install it on your environment by invoking the following command. As the packet name may differ, please adapt it before executing the command.
+Afterwards you can easily install it on your environment by invoking the following command. As the package name may differ, please adapt it before executing the command.
 ```bash
 sudo pip3 install fritzbox-0.1.tar.gz
 ```
 
-Once successfully installed you can use the packet inside your scripts. Please find an example below.
+Once successfully installed you can use the package inside your scripts. Please find an example below.
 ```python
 from fritzbox.FBHomeAuto import FBHomeAuto
 
