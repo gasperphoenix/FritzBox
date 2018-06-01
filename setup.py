@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = "fritzbox",
-    version = "0.1",
+    version = "0.2",
     license = "GNU General Public License v3.0, 29 June 2007",
     author = "Dennis Jung, Dipl.-Ing. (FH)",
     author_email = "Dennis.Jung@stressfrei-arbeiten.com",
