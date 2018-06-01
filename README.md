@@ -1,37 +1,21 @@
-## Welcome to GitHub Pages
+## Welcome to the FritzBox project
 
-You can use the [editor on GitHub](https://github.com/gasperphoenix/FritzBox/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This project is derived from my former project [FritzBoxPresenceDetection](https://github.com/gasperphoenix/FritzBoxPresenceDetection) which provided the functionality to connect to an AVM FritzBox to check the presence of WLAN devices. While adding more features and the ability to interact with the FritzBox Home Automation actors (like switch plugs) using HTTP requests I decided to setup a complete new project with a new structure that encapsules the features for presence detection and home automation in separate modules. Furthermore I moved all the FritzBox communication related methods like authentication and lua-page loading to a new core module.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Package structure
 
-### Markdown
+## FBCore
+This module provides the class *FBCore* that encapsules all methods for communication with the FritzBox like authentication and loading of lua-pages.  
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## FBPresence
+## FBHomeAuto
 
-```markdown
-Syntax highlighted code block
+### Using the distribution files
+- Download
+- Install
+- Use in own module
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/gasperphoenix/FritzBox/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Using the source files
+- Download
+- Install
+- Use in own module
