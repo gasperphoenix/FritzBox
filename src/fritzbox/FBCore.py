@@ -118,8 +118,6 @@ class FritzBox():
         self.ip = ip
         self.password = password
         self.sid = ''
-
-        self.login()
     
     
     def __del__(self):
@@ -139,31 +137,35 @@ class FritzBox():
         Returns:
             Requested page as string, None otherwise.
         """
-        pageUrl = 'http://' + self.ip + ':80' + url + '?sid=' + self.sid.decode('utf-8') + "&no_sidrenew=" + param
         
-        logger.debug("Load the FritzBox page: " + pageUrl)
-        
-        headers = { "Accept" : "application/xml",
-                    "Content-Type" : "text/plain",
-                    "User-Agent" : USER_AGENT}
-    
-        request = urllib.request.Request(pageUrl, headers = headers)
-        
-        try:
-            response = urllib.request.urlopen(request)
-        except:
-            logger.error("Loading of the FritzBox page failed: %s" %(pageUrl))
+        if (self.login()):
+            pageUrl = 'http://' + self.ip + ':80' + url + '?sid=' + self.sid.decode('utf-8') + param
             
-            return None
+            logger.debug("Load the FritzBox page: " + pageUrl)
+            
+            headers = { "Accept" : "application/xml",
+                        "Content-Type" : "text/plain",
+                        "User-Agent" : USER_AGENT}
         
-        page = response.read()
-        
-        if (response.status != 200):
-            logger.error("Unexpected feedback from FritzBox received: %s %s" % (response.status, response.reason))
-                        
+            request = urllib.request.Request(pageUrl, headers = headers)
+            
+            try:
+                response = urllib.request.urlopen(request)
+            except:
+                logger.error("Loading of the FritzBox page failed: %s" %(pageUrl))
+                
+                return None
+            
+            page = response.read()
+            
+            if (response.status != 200):
+                logger.error("Unexpected feedback from FritzBox received: %s %s" % (response.status, response.reason))
+                            
+                return None
+            else:  
+                return page
+        else:
             return None
-        else:  
-            return page
     
     
     def login(self):
