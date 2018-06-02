@@ -139,7 +139,7 @@ class FritzBox():
         Returns:
             Requested page as string, None otherwise.
         """
-        pageUrl = 'http://' + self.ip + ':80' + url + '?sid=' + self.sid.decode('utf-8') + param
+        pageUrl = 'http://' + self.ip + ':80' + url + '?sid=' + self.sid.decode('utf-8') + "&no_sidrenew=" + param
         
         logger.debug("Load the FritzBox page: " + pageUrl)
         
