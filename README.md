@@ -14,7 +14,7 @@ This module provides the class *FBPresence* that encapsules all methods for dete
 This module provides the class *FBHomeAuto* that encapsules all methods for interacting with the AVM home automation actors connected to a FritzBox.
 
 ## Using the distribution files
-First you need to download a source distribution file from ...
+First you need to download a source distribution file from the *dist* subfolder.
 
 Afterwards you can easily install it on your environment by invoking the following command. As the package name may differ, please adapt it before executing the command.
 ```bash
