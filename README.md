@@ -29,3 +29,21 @@ fbHA = FBHomeAuto(ip="192.168.0.1", password="pass1234")
 
 print(fbHA.getSwitchPlugs())
 ```
+
+## Create source distribution
+Before creating the source distribution make sure to adapt the following attributes in the file setup.py to your needs.
+```
+    name = "fritzbox",
+    version = "0.2",
+```
+
+To create the source distribution go to the root folder of the archive and execute the following command
+```
+sh create_dist.sh
+```
+
+This creates a source distribution in both *.zip* and *.tar.gz* format in the subfolder *dist* with the following naming using above attributes:
+```
+<name>-<version>.zip
+<name>-<version>.tar.gz
+```
