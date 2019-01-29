@@ -151,7 +151,7 @@ class FBPresence():
             If the device is registered with the FritzBox the method will return True if the device is present, False otherwise.
         """
         
-        devices, chk_ts = self.fb.getWLANDeviceInformation()
+        devices, chk_ts = self.getWLANDeviceInformation()
         
         if deviceName is not None:
             logger.debug("Check if the device " + deviceName + " is present")
