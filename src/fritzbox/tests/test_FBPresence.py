@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Short description.
 
-This test module ...
+This test module will test the functionality of the module FBPresence
 """
 from openpyxl.worksheet import page
 
@@ -49,8 +49,6 @@ from FBPresence import FBPresence, InvalidParameterError
 IP                = '192.168.0.1'
 PASSWORD          = 'abc'
 TIMESTAMP_NOW     = 123
-LUA_URL           = '/data.lua'
-LUA_URL_PARAMETER = 'lang=de&no_sidrenew=&page=wSet'
 
 
 #===============================================================================
