@@ -144,11 +144,9 @@ class FBPresence():
             deviceName (str): Device that shall be checked.
             debounceOff (int):  Debounce transition to absent by this no. of minutes
             
-        Raises:
-            UnknownDeviceError: If the given device is not registered with the FritzBox 
-
         Returns:
-            If the device is registered with the FritzBox the method will return True if the device is present, False otherwise.
+            If the device is registered with the FritzBox the method will return True if the device is present, 
+            False otherwise.
         """
         
         devices, chk_ts = self.getWLANDeviceInformation()
