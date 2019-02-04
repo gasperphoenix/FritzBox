@@ -103,3 +103,4 @@ venv.bak/
 .mypy_cache/
 /.project
 /.pydevproject
+/.DS_Store
