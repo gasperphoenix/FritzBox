@@ -47,3 +47,9 @@ This creates a source distribution in both *.zip* and *.tar.gz* format in the su
 <name>-<version>.zip
 <name>-<version>.tar.gz
 ```
+
+## Execute module tests
+A shell script module has been added to execute all included module tests. To execute the module tests execute the following command in the root folder of the source code:
+```
+sh execute_unit_test.sh
+```
