@@ -81,7 +81,7 @@ if __name__ == '__main__':
 
     if args.verbose_ERROR:
         log_level = logging.ERROR
-    
+
     if args.verbose_DEBUG:
         log_level = logging.DEBUG
 
@@ -108,6 +108,7 @@ USER_AGENT = "Mozilla/5.0 (U; Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0
 # Exceptions
 #===============================================================================
 class InvalidParameterError(Exception):
+    """Parameter error class"""
     pass
 
 
@@ -272,6 +273,7 @@ class FritzBox(object):
 # Main program
 #===============================================================================
 def main():
+    """Main function for testing purpose"""
     fb = FritzBox(ip=args.ip, password=args.password)
 
 

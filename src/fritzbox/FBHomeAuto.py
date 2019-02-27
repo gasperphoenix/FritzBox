@@ -110,6 +110,7 @@ logger = logging.getLogger(__name__)
 # Exceptions
 #===============================================================================
 class InvalidParameterError(Exception):
+    """Parameter error class"""
     pass
 
 
@@ -183,6 +184,7 @@ class FBHomeAuto(object):
 # Main program
 #===============================================================================
 def main():
+    """Main function for testing purpose"""
     fb_ha = FBHomeAuto(ip=args.ip, password=args.password)
 
     switch_plugs = fb_ha.get_switch_plugs()

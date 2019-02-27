@@ -55,48 +55,49 @@ TIMESTAMP_NOW     = 123
 # Test class definitions
 #===============================================================================
 class test_CLASS(TestCase):
+    """Test class that contains all test cases"""
     @patch('FBPresence.FBCore.FritzBox', autospec=True)
-    def setUp(self, FritzBox_mock):
+    def setUp(self, fritzbox_mock):
         self.fbP = FBPresence(ip=IP, password=PASSWORD)
-        FritzBox_mock.assert_called_once_with(IP, PASSWORD)
-    
-    
+        fritzbox_mock.assert_called_once_with(IP, PASSWORD)
+
+
     def tearDown(self):
         pass
-    
-        
-    def test_init(self):    
-        assert self.fbP.deviceList == {}
-    
+
+
+    def test_init(self):
+        assert self.fbP.device_list == {}
+
 
     @patch('FBPresence.json.loads', autospec=True)
     @patch('FBPresence.time.time', autospec=True)
-    def test_getWLANDeviceInformation(self, time_mock, json_mock):
+    def test_get_wlan_device_information(self, time_mock, json_mock):
         time_mock.return_value = TIMESTAMP_NOW
-        self.fbP.getWLANDeviceInformation()
+        self.fbP.get_wlan_device_information()
         assert json_mock.call_count == 1
-        assert self.fbP.deviceList == {}
+        assert self.fbP.device_list == {}
 
-        
-    @patch('FBPresence.FBPresence.getWLANDeviceInformation', autospec=True)    
-    def test_isDevicePresent(self, FBPresence_mock):
-        debounceTime = 1
-        
-        FBPresence_mock.return_value = {'PresentDevice' : {'on_ts' : 60*debounceTime*10},
-                                        'DebounceAbsentDevice' : {'on_ts' : 60*debounceTime*10-30},
-                                        'AbsentDevice' : {'on_ts' : 0}}, 60*debounceTime*10
-        
-        assert self.fbP.isDevicePresent(deviceName='UnknownDevice', debounceOff=debounceTime) == False
-        
-        assert self.fbP.isDevicePresent(deviceName='PresentDevice', debounceOff=debounceTime) == True
-        assert self.fbP.isDevicePresent(deviceName='DebounceAbsentDevice', debounceOff=debounceTime) == True
-        
-        assert self.fbP.isDevicePresent(deviceName='AbsentDevice', debounceOff=debounceTime) == False
-        
+
+    @patch('FBPresence.FBPresence.get_wlan_device_information', autospec=True)
+    def test_is_device_present(self, fbpresence_mock):
+        debounce_time = 1
+
+        fbpresence_mock.return_value = {'PresentDevice' : {'on_ts' : 60*debounce_time*10},
+                                        'DebounceAbsentDevice' : {'on_ts' : 60*debounce_time*10-30},
+                                        'AbsentDevice' : {'on_ts' : 0}}, 60*debounce_time*10
+
+        assert self.fbP.is_device_present(device_name='UnknownDevice', debounce_off=debounce_time) == False
+
+        assert self.fbP.is_device_present(device_name='PresentDevice', debounce_off=debounce_time) == True
+        assert self.fbP.is_device_present(device_name='DebounceAbsentDevice', debounce_off=debounce_time) == True
+
+        assert self.fbP.is_device_present(device_name='AbsentDevice', debounce_off=debounce_time) == False
+
         with pytest.raises(InvalidParameterError):
-            self.fbP.isDevicePresent(debounceOff=1) == False
-    
-    
+            self.fbP.is_device_present(debounce_off=1) == False
+
+
 #===============================================================================
 # Start of program
 #===============================================================================
