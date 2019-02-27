@@ -132,6 +132,18 @@ class FBHomeAuto(object):
 
 
     def get_switch_plugs(self):
+        """Load the AINs of all available switch plugs from the FritzBox.
+
+        This method reads out the AINs of all switch plugs registered with the FritzBox and
+        returns them as a list.
+
+        Args:
+            Does not require any arguments.
+
+        Returns:
+            Returns a list with all AINs of registered switch plugs
+        """
+
         logger.debug("Load the AINs of all available switch plugs from the FritzBox")
 
         page = self.fb.loadFritzBoxPage('/webservices/homeautoswitch.lua', '&switchcmd=getswitchlist')
@@ -142,6 +154,17 @@ class FBHomeAuto(object):
 
 
     def get_switch_plug_state(self, switch_plug_ain):
+        """Load the switch state of the given switch plug from the FritzBox.
+
+        This method returns the switch state of the requested switch plug.
+
+        Args:
+            switch_plug_ain (str):    The AIN of the switch plug that should be checked
+
+        Returns:
+            Returns the state of the switch plug
+        """
+
         logger.debug("Load the switch state of the given switch plug from the FritzBox")
 
         page = self.fb.loadFritzBoxPage('/webservices/homeautoswitch.lua', '&switchcmd=getswitchstate&ain=' +
@@ -153,6 +176,18 @@ class FBHomeAuto(object):
 
 
     def set_switch_plug_state(self, switch_plug_ain, state):
+        """Set the switch state of the given switch plug.
+
+        This method sets the switch state of the requested switch plug.
+
+        Args:
+            switch_plug_ain (str): The AIN of the switch plug that should be set
+            state (str):           Target state 'on' or 'off'
+
+        Returns:
+            Does not return any value.
+        """
+
         logger.debug("Set the switch state for a given switch plug using the FritzBox")
 
         if state == 'on':
@@ -170,6 +205,17 @@ class FBHomeAuto(object):
 
 
     def toggle_switch_plug_state(self, switch_plug_ain):
+        """Toggle the state of the given switch plug.
+
+        This method toggles the state of the requested switch plug.
+
+        Args:
+            switch_plug_ain (str): The AIN of the switch plug that should be set
+
+        Returns:
+            Does not return any value.
+        """
+
         logger.debug("Toggle the switch state for a given switch plug using the FritzBox")
 
         page = self.fb.loadFritzBoxPage('/webservices/homeautoswitch.lua', '&switchcmd=setswitchtoggle&ain=' +
