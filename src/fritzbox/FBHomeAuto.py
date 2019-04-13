@@ -146,7 +146,7 @@ class FBHomeAuto(object):
 
         logger.debug("Load the AINs of all available switch plugs from the FritzBox")
 
-        page = self.fb.loadFritzBoxPage('/webservices/homeautoswitch.lua', '&switchcmd=getswitchlist')
+        page = self.fb.load_fritzbox_page('/webservices/homeautoswitch.lua', '&switchcmd=getswitchlist')
 
         switch_plugs = page.decode('UTF-8').strip('\n').split(',')
 
