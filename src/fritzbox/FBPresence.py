@@ -201,7 +201,7 @@ class FBPresence(object):
 
         self.chk_ts = time.time()
 
-        page = self.fb.loadFritzBoxPage('/data.lua', 'lang=de&no_sidrenew=&page=wSet')
+        page = self.fb.load_fritzbox_page('/data.lua', 'lang=de&no_sidrenew=&page=wSet')
 
         json_structure = json.loads(page.decode('UTF-8'))
 
