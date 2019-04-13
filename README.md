@@ -18,7 +18,7 @@ First you need to download a source distribution file from the *dist* subfolder.
 
 Afterwards you can easily install it on your environment by invoking the following command. As the package name may differ, please adapt it before executing the command.
 ```bash
-sudo pip3 install fritzbox-0.1.tar.gz
+pip3 install fritzbox-0.1.tar.gz
 ```
 
 Once successfully installed you can use the package inside your scripts. Please find an example below.
@@ -31,6 +31,11 @@ print(fbHA.getSwitchPlugs())
 ```
 
 ## Create source distribution
+First you need to install all required dependencies.
+```
+pip3 install setuptools
+```
+
 Before creating the source distribution make sure to adapt the following attributes in the file setup.py to your needs.
 ```
     name = "fritzbox",
@@ -49,6 +54,11 @@ This creates a source distribution in both *.zip* and *.tar.gz* format in the su
 ```
 
 ## Execute module tests
+First you need to install all required dependencies.
+```
+pip3 install openpyxl pytest pytest-cov
+```
+
 A shell script module has been added to execute all included module tests. To execute the module tests execute the following command in the root folder of the source code:
 ```
 sh execute_unit_test.sh
