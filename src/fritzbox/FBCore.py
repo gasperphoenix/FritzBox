@@ -4,12 +4,14 @@
 This module provides an interface for communicating with a FritzBox.
 """
 
-__author__     = "Dennis Jung"
-__copyright__  = "Copyright 2018, Dennis Jung"
-__credits__    = ["Dennis Jung"]
-__license__    = "GPL Version 3"
-__maintainer__ = "Dennis Jung"
-__email__      = "Dennis.Jung@stressfrei-arbeiten.com"
+import _info
+
+__author__     = _info.__author__
+__copyright__  = _info.__copyright__
+__credits__    = _info.__credits__
+__license__    = _info.__license__
+__maintainer__ = _info.__maintainer__
+__email__      = _info.__email__
 
 
 #===============================================================================

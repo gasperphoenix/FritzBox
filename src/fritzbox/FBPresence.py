@@ -4,12 +4,14 @@
 This module provides an interface for communicating with a FritzBox.
 """
 
-__author__     = "Dennis Jung"
-__copyright__  = "Copyright 2018, Dennis Jung"
-__credits__    = ["Dennis Jung"]
-__license__    = "GPL Version 3"
-__maintainer__ = "Dennis Jung"
-__email__      = "Dennis.Jung@stressfrei-arbeiten.com"
+import _info
+
+__author__     = _info.__author__
+__copyright__  = _info.__copyright__
+__credits__    = _info.__credits__
+__license__    = _info.__license__
+__maintainer__ = _info.__maintainer__
+__email__      = _info.__email__
 
 
 #===============================================================================
@@ -25,7 +27,7 @@ import time
 from xml.dom import minidom
 import xml.etree.ElementTree as ElementTree
 
-from fritzbox import FBCore
+import FBCore
 
 
 #===============================================================================
@@ -201,7 +203,7 @@ class FBPresence(object):
 
         self.chk_ts = time.time()
 
-        page = self.fb.loadFritzBoxPage('/data.lua', 'lang=de&no_sidrenew=&page=wSet')
+        page = self.fb.load_fritzbox_page('/data.lua', 'lang=de&no_sidrenew=&page=wSet')
 
         json_structure = json.loads(page.decode('UTF-8'))
 
