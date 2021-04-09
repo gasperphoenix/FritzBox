@@ -11,5 +11,5 @@ setup(
     url          = _info.__url__,
     description  = _info.__package_desc__,
     package_dir  = {"" : "src"},
-    py_modules   = ["fritzbox.FBCore", "fritzbox.FBPresence", "fritzbox.FBHomeAuto"]
+    py_modules   = ["fritzbox._info", "fritzbox.FBCore", "fritzbox.FBPresence", "fritzbox.FBHomeAuto"]
     )
