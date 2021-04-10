@@ -14,21 +14,24 @@ This module provides the class *FBPresence* that encapsules all methods for dete
 This module provides the class *FBHomeAuto* that encapsules all methods for interacting with the AVM home automation actors connected to a FritzBox.
 
 ## Using the distribution files
-First you need to download a source distribution file from the *dist* subfolder.
+First you need to clone a sandbox from this project.
 
-Afterwards you can easily install it on your environment by invoking the following command. As the package name may differ, please adapt it before executing the command.
 ```bash
-pip3 install fritzbox-0.1.tar.gz
+cd ~
+
+git clone https://github.com/gasperphoenix/FritzBox
 ```
 
-Once successfully installed you can use the package inside your scripts. Please find an example below.
-```python
-from fritzbox.FBHomeAuto import FBHomeAuto
+Afterwards you can easily install it on your environment by invoking the following command. 
 
-fbHA = FBHomeAuto(ip="192.168.0.1", password="pass1234")
+```bash
+cd ~/FritzBox
 
-print(fbHA.getSwitchPlugs())
+pip3 install dist/fritzbox-*.wheel
 ```
+
+Please refer to the example scripts as reference how to use this package. They
+are stored in the "example" subfolder of the project.
 
 ## Create source distribution
 First you need to install all required dependencies.
@@ -47,11 +50,9 @@ To create the source distribution go to the root folder of the archive and execu
 sh create_dist.sh
 ```
 
-This creates a source distribution in both *.zip* and *.tar.gz* format in the subfolder *dist* with the following naming using above attributes:
-```
-<name>-<version>.zip
-<name>-<version>.tar.gz
-```
+This creates a distribution in the wheel format in the subfolder "dist" which
+can be installed using pip. Please refer to the description above.
+
 
 ## Execute module tests
 First you need to install all required dependencies.

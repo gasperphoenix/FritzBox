@@ -4,14 +4,14 @@
 This module provides an interface for communicating with a FritzBox.
 """
 
-import _info
+import fritzbox._info
 
-__author__     = _info.__author__
-__copyright__  = _info.__copyright__
-__credits__    = _info.__credits__
-__license__    = _info.__license__
-__maintainer__ = _info.__maintainer__
-__email__      = _info.__email__
+__author__     = fritzbox._info.__author__
+__copyright__  = fritzbox._info.__copyright__
+__credits__    = fritzbox._info.__credits__
+__license__    = fritzbox._info.__license__
+__maintainer__ = fritzbox._info.__maintainer__
+__email__      = fritzbox._info.__email__
 
 
 #===============================================================================
