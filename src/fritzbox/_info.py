@@ -11,4 +11,4 @@ __copyright__     = "Copyright 2019-2021, " + __author__
 __license__       = "GPL Version 3"
 
 __url__           = "https://github.com/gasperphoenix/FritzBox"
-__version__       = '0.7.1'
+__version__       = '0.8.0'
