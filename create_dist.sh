@@ -1,2 +1,1 @@
-python3 src/fritzbox/setup.py sdist --formats=zip,gztar
-rm -rf src/fritzbox.egg-info
+python3 src/fritzbox/setup.py bdist_wheel 

@@ -4,14 +4,14 @@
 This module provides an interface for communicating with a FritzBox.
 """
 
-import _info
+import fritzbox._info
 
-__author__     = _info.__author__
-__copyright__  = _info.__copyright__
-__credits__    = _info.__credits__
-__license__    = _info.__license__
-__maintainer__ = _info.__maintainer__
-__email__      = _info.__email__
+__author__     = fritzbox._info.__author__
+__copyright__  = fritzbox._info.__copyright__
+__credits__    = fritzbox._info.__credits__
+__license__    = fritzbox._info.__license__
+__maintainer__ = fritzbox._info.__maintainer__
+__email__      = fritzbox._info.__email__
 
 
 #===============================================================================
@@ -27,7 +27,7 @@ import time
 from xml.dom import minidom
 import xml.etree.ElementTree as ElementTree
 
-import FBCore
+import fritzbox.FBCore
 
 
 #===============================================================================
@@ -126,7 +126,7 @@ class FBHomeAuto(object):
     """
 
     def __init__(self, ip, password):
-        self.fb = FBCore.FritzBox(ip, password)
+        self.fb = fritzbox.FBCore.FritzBox(ip, password)
 
 
     def __del__(self):
@@ -169,7 +169,7 @@ class FBHomeAuto(object):
 
         logger.debug("Load the switch state of the given switch plug from the FritzBox")
 
-        page = self.fb.loadFritzBoxPage('/webservices/homeautoswitch.lua', '&switchcmd=getswitchstate&ain=' +
+        page = self.fb.load_fritzbox_page('/webservices/homeautoswitch.lua', '&switchcmd=getswitchstate&ain=' +
                                         switch_plug_ain)
 
         switch_plug_state = page.decode('UTF-8').strip('\n')
