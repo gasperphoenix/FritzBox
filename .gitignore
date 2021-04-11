@@ -105,3 +105,4 @@ venv.bak/
 /.pydevproject
 /.DS_Store
 *.swp
+update_fritzbox.sh

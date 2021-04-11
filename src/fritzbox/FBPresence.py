@@ -26,6 +26,8 @@ import json
 import time
 from xml.dom import minidom
 import xml.etree.ElementTree as ElementTree
+import collections
+import threading
 
 import fritzbox.FBCore
 
@@ -115,11 +117,87 @@ logger = logging.getLogger(__name__)
 
 
 #===============================================================================
+# Global variables
+#===============================================================================
+device_states = collections.defaultdict(dict)
+
+
+#===============================================================================
 # Exceptions
 #===============================================================================
 class InvalidParameterError(Exception):
     """Parameter error class"""
     pass
+
+
+#===============================================================================
+# Method definitions
+#===============================================================================
+def _supervise_device_presence_changes(fbpresence, device, callback):
+    """Thread method for the presence supervision
+
+    The callback function needs to implement the following signature:
+        callback(device, old_state, new_state):
+            device (str): Device name
+            old_state (bool): True=present, False=absent
+            new_state (bool): True=present, False=absent
+
+    Args:
+        fbpresence (fritzbox.FBPresence.FBPresence): FBPresence object
+        device (str): Name of a device registered to the Fritz!Box WLAN
+        callback (function): Reference to a function that shall be called
+            everytime the device state changes.
+    """
+
+    global device_states
+
+    if device not in device_states.keys():
+        old_state = fbpresence.is_device_present(device_name=device)
+    else:
+        old_state = device_states[device]
+
+    while True:
+        new_state = fbpresence.is_device_present(device_name=device)
+
+        if new_state != old_state:
+            callback(device,
+                     old_state,
+                     new_state)
+
+        old_state = new_state
+        device_states[device] = new_state
+
+
+def start_device_presence_supervision(fbpresence, device, callback):
+    """Start a presence supervision for a device
+
+    Registers a callback that will be called everytime the presence state
+    of a device changes.
+
+    The callback function needs to implement the following signature:
+        callback(device, old_state, new_state):
+            device (str): Device name
+            old_state (bool): True=present, False=absent
+            new_state (bool): True=present, False=absent
+
+    Args:
+        fbpresence (fritzbox.FBPresence.FBPresence): FBPresence object
+        device (str): Name of a device registered to the Fritz!Box WLAN
+        callback (function): Reference to a function that shall be called
+            everytime the device state changes.
+
+    Returns:
+        thread (threading.Thread): Thread created for the supervision
+
+    Examples:
+        ...
+    """
+
+    t = threading.Thread(target=_supervise_device_presence_changes,
+                         args=(fbpresence, device, callback),
+                         daemon=True)
+
+    t.start()
 
 
 #===============================================================================
