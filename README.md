@@ -33,6 +33,33 @@ pip3 install dist/fritzbox-*.wheel
 Please refer to the example scripts as reference how to use this package. They
 are stored in the "example" subfolder of the project.
 
+Basic example for presence supervision:
+
+```python
+import fritzbox.FBPresence as fp
+
+ip = '192.168.178.1'
+password = 'PASSWORD'
+device = 'iphone'
+
+def alert_change(device, old_state, new_state):
+    old_state = 'present' if old_state else 'absent'
+    new_state = 'present' if new_state else 'absent'
+
+    print(f'Device "{device}" changed from {old_state} to {new_state}')
+
+
+fb_p = fp.FBPresence(ip=ip, password=password)
+
+print('[*] Starting device supervision')
+fp.start_device_presence_supervision(fb_p,
+                                     device,
+                                     alert_change)
+
+while True:
+    pass
+```
+
 ## Create source distribution
 First you need to install all required dependencies.
 ```
