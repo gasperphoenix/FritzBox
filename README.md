@@ -33,7 +33,9 @@ pip3 install dist/fritzbox-*.wheel
 Please refer to the example scripts as reference how to use this package. They
 are stored in the "example" subfolder of the project.
 
-Basic example for presence supervision:
+Basic example for presence supervision. Assume your Fritz!Box is configured 
+to run on 192.168.178.1 using the password "PASSWORD" for access and you want 
+to supervise the presence of the device "iphone":
 
 ```python
 import fritzbox.FBPresence as fp
