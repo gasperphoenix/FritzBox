@@ -27,7 +27,7 @@ Afterwards you can easily install it on your environment by invoking the followi
 ```bash
 cd ~/FritzBox
 
-pip3 install dist/fritzbox-*.wheel
+pip3 install dist/fritzbox-*.whl
 ```
 
 Please refer to the example scripts as reference how to use this package. They
